@@ -38,7 +38,20 @@ tasks.register<Exec>("npmInstall") {
     commandLine = listOf("npm", "i")
 }
 
-tasks.register<Exec>("") {
+tasks.register<Exec>("compileUi") {
+    dependsOn("npmInstall")
     workingDir = file("ui")
     commandLine = listOf("npm", "run", "build")
+}
+
+tasks.register<Copy>("copyUi") {
+    dependsOn("compileUi")
+    from("ui/dist/index.html")
+    from("ui/dist/app.js")
+    from("ui/dist/css")
+    into("src/main/resources")
+}
+
+tasks.withType<org.springframework.boot.gradle.tasks.run.BootRun> {
+    dependsOn("copyUi")
 }
