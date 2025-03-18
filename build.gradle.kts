@@ -35,5 +35,10 @@ tasks.withType<KotlinCompile> {
 
 tasks.register<Exec>("npmInstall") {
     workingDir = file("ui")
-    commandLine = listOf("npm", "install")
+    commandLine = listOf("npm", "i")
+}
+
+tasks.register<Exec>("") {
+    workingDir = file("ui")
+    commandLine = listOf("npm", "run", "build")
 }
