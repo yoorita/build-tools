@@ -15,7 +15,7 @@ module.exports = {
     }),
     new CopyPlugin({
       patterns: [
-        { from: "./src/style.css", to: "./dist/css/" },
+        { from: "./src/style.css", to: "css/" },
       ],
     }),
   ],
