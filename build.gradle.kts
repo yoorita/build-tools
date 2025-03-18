@@ -33,6 +33,7 @@ tasks.withType<KotlinCompile> {
 	}
 }
 
-
-
-// TODO: your code starts here
+tasks.register<Exec>("npmInstall") {
+    workingDir = file("ui")
+    commandLine = listOf("npm", "install")
+}
